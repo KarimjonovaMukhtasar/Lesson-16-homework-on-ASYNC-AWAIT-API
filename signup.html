@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            margin: 0;
+            padding: 0;
+            background-color: aqua;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .formContainer {
+            margin-top: 5px;
+            padding-top: 5px;
+            background-color: rgb(240, 243, 242);
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 700px;
+            width: 600px;
+            flex-direction: column;
+
+        }
+
+        input,
+        button {
+            height: 35px;
+            width: 95%;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            border: 10px;
+            border-radius: 10px;
+            background-color: whitesmoke;
+            border-color: black;
+            border: solid lightslategrey;
+
+        }
+
+        label,
+        .btntext,
+        p {
+            font-size: 20px;
+            font-style: normal;
+            font-family: sans-serif;
+            text-align: left;
+            align-items: left;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="formContainer">
+            <form id="form">
+                <h2>SIGNUP FORM</h2><br>
+                <label for="username">Username</label><br>
+                <input id="username" name="username" type="text" required><br>
+                <label for="email">Email</label><br>
+                <input id="email" name="email" type="email" required><br>
+                <p id="failemail"></p>
+                <label for="password">Password</label><br>
+                <input id="password" name="password" type="password" required><br>
+                <p id="failpassword"></p>
+                <label for="confirm">Confirm Password</label><br>
+                <input id="confirm" name="confirm" required><br><br>
+                <p id="failconfirm"></p>
+                <button class="btntext" style="background-color: aquamarine;"> Submit </button><br>
+                <p> Already have an account, <a href="./signin.html"> Sign in here </a></p>
+            </form>
+        </div>
+    </div>
+    <script src="./dom.js"></script>
+</body>
+</html>

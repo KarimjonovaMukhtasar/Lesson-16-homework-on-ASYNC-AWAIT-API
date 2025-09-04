@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            margin: 0;
+            padding: 0;
+            background-color: aqua;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .formContainer {
+            margin-top: 5px;
+            padding-top: 5px;
+            background-color: rgb(240, 243, 242);
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 500px;
+            width: 550px;
+            flex-direction: column;
+        }
+
+        input,
+        button {
+            height: 35px;
+            width: 95%;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            border: 10px;
+            border-radius: 10px;
+            background-color: whitesmoke;
+            border-color: black;
+            border: solid lightslategrey;
+        }
+
+        label,
+        .btntext,
+        p {
+            font-size: 20px;
+            font-style: normal;
+            font-family: sans-serif;
+            text-align: left;
+            align-items: left;
+            justify-items: left;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="formContainer">
+            <form id="formm">
+                <h2>SIGN IN FORM</h2><br>
+                <label for="emaill">Email</label><br>
+                <input id="emaill" name="emaill" type="email" required><br>
+                <label for="passwordd">Password</label><br>
+                <input id="passwordd" name="passwordd" type="password" required><br>
+                <button class="btntext" style="background-color: aquamarine;"> Submit </button><br>
+                <p> Not have an account, <a href="./signup.html"> Sign up here </a></p>
+            </form>
+        </div>
+    </div>
+    <script src="./dom.js"></script>
+</body>
+</html>
