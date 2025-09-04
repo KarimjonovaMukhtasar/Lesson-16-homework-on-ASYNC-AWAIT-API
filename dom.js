@@ -48,16 +48,15 @@ function showSuccessMessage(message) {
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert success';
     alertDiv.textContent = message;
-     const container = document.getElementById("success");
+    const container = document.getElementById("success");
     container.innerHTML = "";
     container.appendChild(alertDiv);
 }
-
 function showErrorMessage(message) {
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert error';
     alertDiv.textContent = message;
-     const container = document.getElementById("error");
+    const container = document.getElementById("error");
     container.innerHTML = "";
     container.appendChild(alertDiv);
 }
@@ -79,14 +78,17 @@ async function signupAPI({firstName, lastName, email,password}){
         console.log("Status:", response.status); 
         console.log("OK:", response.ok);       
         console.log("Response data:", data);    
-        if(response.ok) {
-            showSuccessMessage("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+        if(response.ok){
+            // showSuccessMessage("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+            alert("Muvaffaqiyatli ro'yxatdan o'tdingiz!")
             return true
         } else {
+            alert("Xatolik yuz berdi")
             showErrorMessage(data.message || 'Xatolik yuz berdi');
             return false
         }
-    } catch (error) {
+    }catch (error){
+        alert("Server bilan bog'lanishda xatolik")
         showErrorMessage("Server bilan bog'lanishda xatolik");
         return false;
     } finally {
@@ -96,13 +98,14 @@ async function signupAPI({firstName, lastName, email,password}){
 //SIGNUP USER 
 async function signupUser({firstName, lastName, email, password}) {
     try {
-        // Fetch all users
         const response = await fetch('https://682f107d746f8ca4a47fa71c.mockapi.io/products');
         const users = await response.json();
-
+        console.log(users)
+        // let data = users.forEach(user => {firstName = user.firstname, lastName = user.lastname, email = user.email, password = user.password} )
+        // console.log(data[0])
         // Check if email already exists
         let exists = users.find(u => u.email === email);
-        if(exists !== undefined) {
+        if(exists !== undefined){
             showErrorMessage("Bu email bilan foydalanuvchi mavjud. Iltimos, SIGN IN qiling!");
             return;
         }
@@ -120,26 +123,32 @@ async function signupUser({firstName, lastName, email, password}) {
 }
 
 //LOGIN USER
-async function LoginUser(email,password) {
+async function LoginUser({email,password}) {
     try {
         // Fetch all users
         const response = await fetch('https://682f107d746f8ca4a47fa71c.mockapi.io/products');
         const users = await response.json();
-        console.log(users)
-        // Check if email  and password matches with the one already exists
-        let exists = users.find(u => u.email === email  && u.password === password);
-        if(exists !== undefined){
+        let check = false
+        for(let key in users){
+            if(key.email === email && key.password === password){
+                check = true
+            }
+        }
+        if(check){
+            alert("Tabriklaymiz, muvaffaqiyatli tizimga kirdingiz!")
             showSuccessMessage("Tabriklaymiz, muvaffaqiyatli tizimga kirdingiz!");
             return;
         }
         else{
-             showErrorMessage("Email yoki parol noto'g'ri");
+            alert("Email yoki parol noto'g'ri")
+            showErrorMessage("Email yoki parol noto'g'ri");
             if (confirm("Yangi ro'yxatdan o'tishni xohlaysizmi?")) {
             window.location.href = "./signup.html";
         }
     }
     } catch (err) {
-        showErrorMessage("Server bilan bog‘lanishda xatolik");
+        alert("Server bilan bog'lanishda xatolik")
+        showErrorMessage("Server bilan bog'lanishda xatolik");
     }  
 }
  // 1. Validationlarni tekshirish
